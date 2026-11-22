@@ -50,3 +50,4 @@ Once you know your production domain, set `site` in `astro.config.mjs` and rebui
 ## Connect the newsletter later
 
 The form validates the email and displays a setup message. The value stays in the field. To connect a provider, replace the placeholder submit handler in `NewsletterForm.astro` with the provider's supported public form endpoint or embed instructions. For a hosted form submission, add the provider's required field name and set the form action and method. For a JavaScript submission, use the existing status region to communicate the provider's actual response. Keep any secret API keys out of the browser.
+# Vibe_Coding
