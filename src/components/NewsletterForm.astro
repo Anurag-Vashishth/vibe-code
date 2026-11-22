@@ -1,0 +1,36 @@
+---
+const { compact = false } = Astro.props;
+---
+<section id="newsletter" class:list={['newsletter', { compact }]} aria-labelledby="newsletter-title">
+  <div class="wrap newsletter-inner">
+    <div>
+      <p class="eyebrow"><span class="brand-dot" aria-hidden="true"></span>The newsletter</p>
+      <h2 id="newsletter-title">Good ideas.<br />Once a week<span class="accent">.</span></h2>
+      <p>One email every week with interesting ideas, useful lessons, and things worth sharing. Straight to your inbox.</p>
+    </div>
+    <form data-newsletter aria-describedby="newsletter-note">
+      <fieldset disabled>
+        <label for="newsletter-email">Email address</label>
+        <input id="newsletter-email" type="email" autocomplete="email" placeholder="you@example.com" required />
+        <button class="button button-red" type="submit">Join the newsletter <span aria-hidden="true">→</span></button>
+      </fieldset>
+      <p id="newsletter-note">No spam. Just one good email a week.</p>
+      <p class="form-status" role="status" data-status></p>
+      <noscript><p>Newsletter signup isn't connected yet. Please check back soon.</p></noscript>
+    </form>
+  </div>
+</section>
+<script>
+  const form = document.querySelector('[data-newsletter]');
+  const fieldset = form?.querySelector('fieldset');
+  const status = form?.querySelector('[data-status]');
+
+  if (form && fieldset && status) {
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      // Connect the future newsletter provider here and update the status from its response.
+      status.textContent = "Newsletter signup isn't connected yet. Please check back soon.";
+    });
+    fieldset.disabled = false;
+  }
+</script>

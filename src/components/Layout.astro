@@ -1,0 +1,36 @@
+---
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import '../styles/global.css';
+
+const { title, description, path } = Astro.props;
+const canonical = Astro.site ? new URL(path, Astro.site) : undefined;
+// Set this to a local sharing image path once one is available.
+const sharingImage = '';
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {canonical && <link rel="canonical" href={canonical} />}
+    {Astro.site && <link rel="sitemap" href="/sitemap.xml" />}
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Pete McPherson" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    {canonical && <meta property="og:url" content={canonical} />}
+    {Astro.site && sharingImage && <meta property="og:image" content={new URL(sharingImage, Astro.site)} />}
+    <link rel="preconnect" href="https://api.fontshare.com" />
+    <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=switzer@400&amp;f[]=khand@700&amp;display=swap" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <Header path={path} />
+    <main id="main"><slot /></main>
+    <Footer />
+  </body>
+</html>

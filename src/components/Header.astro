@@ -1,0 +1,13 @@
+---
+const { path } = Astro.props;
+const pages = [['Home', '/'], ['About', '/about'], ['Projects', '/projects']];
+---
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="wordmark" href="/"><span class="brand-dot" aria-hidden="true"></span>Pete McPherson</a>
+    <nav aria-label="Main navigation">
+      {pages.map(([label, href]) => <a href={href} aria-current={path === href ? 'page' : undefined}>{label}</a>)}
+      <a class="newsletter-link" href="/#newsletter">Newsletter <span aria-hidden="true">↗</span></a>
+    </nav>
+  </div>
+</header>

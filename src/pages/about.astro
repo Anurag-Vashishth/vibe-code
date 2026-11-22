@@ -1,0 +1,46 @@
+---
+import Layout from '../components/Layout.astro';
+import NewsletterForm from '../components/NewsletterForm.astro';
+
+const milestones = ['Experience / Milestone One', 'Experience / Milestone Two', 'Experience / Milestone Three'];
+const interests = [
+  ['Useful tools', 'Placeholder for a tool or workflow I’m experimenting with.'],
+  ['Creative experiments', 'Placeholder for a question I’m curious enough to explore.'],
+  ['Ideas worth sharing', 'Placeholder for a topic I’m reading or writing about.'],
+];
+---
+<Layout title="About Pete McPherson" description="Get to know Pete McPherson and see what he’s currently exploring." path="/about">
+  <section class="wrap hero page-hero">
+    <h1>Hey, I'm <em>Pete.</em></h1>
+    <p class="lede">A little about who I am, what I've done, and what keeps me curious.</p>
+  </section>
+  <section class="intro section">
+    <div class="wrap split portrait-layout">
+      <figure>
+        <img class="portrait" src="/images/portrait.png" alt="" width="720" height="450" />
+        <figcaption>Portrait placeholder</figcaption>
+      </figure>
+      <div class="story">
+        <h2>A little<br />background<span class="accent">.</span></h2>
+        <p><strong>Background placeholder.</strong> This is where I’ll share where I got started and what drew me to making things.</p>
+        <p><strong>Experience placeholder.</strong> I’ll fill this in with the work I’ve done, the problems I’ve tackled, and the lessons I keep coming back to.</p>
+        <p><strong>Interests placeholder.</strong> I’ll share what I’m curious about outside of work and the kinds of ideas I enjoy turning into projects.</p>
+      </div>
+    </div>
+  </section>
+  <section class="wrap section split">
+    <h2>The journey<br />so far<span class="accent">.</span></h2>
+    <ul class="timeline">
+      {milestones.map((milestone) => <li><span>202X</span>{milestone}</li>)}
+    </ul>
+  </section>
+  <section class="intro section">
+    <div class="wrap">
+      <h2>Currently exploring<span class="accent">.</span></h2>
+      <div class="interest-grid">
+        {interests.map(([title, details]) => <article><h3>{title}</h3><p>{details}</p></article>)}
+      </div>
+    </div>
+  </section>
+  <NewsletterForm compact />
+</Layout>

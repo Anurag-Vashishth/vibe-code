@@ -1,0 +1,17 @@
+---
+import Layout from '../components/Layout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import NewsletterForm from '../components/NewsletterForm.astro';
+import { projects } from '../data/projects.js';
+---
+<Layout title="Projects — Pete McPherson" description="Browse Pete McPherson’s projects, creative experiments, and side projects." path="/projects">
+  <section class="wrap hero page-hero">
+    <h1>Things I've <em>built.</em></h1>
+    <p class="lede">A collection of projects, experiments, and ideas I've brought to life.</p>
+  </section>
+  <section class="wrap project-list" aria-labelledby="projects-title">
+    <h2 class="sr-only" id="projects-title">All projects</h2>
+    <div class="project-grid">{projects.map((project, index) => <ProjectCard project={project} eager={index < 2} />)}</div>
+  </section>
+  <NewsletterForm compact />
+</Layout>
